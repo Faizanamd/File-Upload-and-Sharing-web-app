@@ -19,7 +19,7 @@ export default function Login() {
                 toast.error("Password must contain at least 6 characters");
                 return;
             }
-            const response = await axios.post('/api/users/login', user);
+            const response = await axios.post(`https://file-upload-and-sharing-web-app.vercel.app//api/users/login`, user);
             if(response.data.status){
                 toast.success(response.data.message);
                 router.push("/dashboard/files");
