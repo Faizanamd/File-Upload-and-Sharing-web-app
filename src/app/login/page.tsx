@@ -44,7 +44,7 @@ export default function Login() {
                     <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} className="w-full px-2 py-2 rounded-md text-lg outline-none" type="password" placeholder="Password" />
                 </div>
                 <button onClick={handleLogin} className="w-full uppercase my-4 bg-white py-2 rounded-lg text-2xl font-medium transition duration-500   hover:bg-black hover:text-white ">Login</button>
-                <p>Don't have account? <Link className="text-xl underline uppercase" href={'/signup'}>Sign Up</Link></p>
+                <p>Don&apos;t have account? <Link className="text-xl underline uppercase" href={'/signup'}>Sign Up</Link></p>
             </div>
         </div>
     )
