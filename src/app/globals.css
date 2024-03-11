@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.minHeightClass{
+    min-height: calc(100vh - 120px);
+}
