@@ -6,9 +6,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 export default function Login() {
     const router = useRouter();
-    useEffect(() => {
-        toast.success("la;ldf")
-    }, [])
+    
     const [user, setUser] = useState({ email: "", password: "" });
     const handleLogin = async() =>{
         try {
@@ -19,7 +17,7 @@ export default function Login() {
                 toast.error("Password must contain at least 6 characters");
                 return;
             }
-            const response = await axios.post(`https://file-upload-and-sharing-web-app.vercel.app//api/users/login`, user);
+            const response = await axios.post(`/api/users/login`, user);
             if(response.data.status){
                 toast.success(response.data.message);
                 router.push("/dashboard/files");
