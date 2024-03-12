@@ -4,9 +4,6 @@ import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Home() {
-  useEffect(() =>{
-    toast.success("toas added ");
-  }, [])
   return (
     <div className="w-full min-h-screen bg-slate-300">
       <div className="w-full h-16 bg-slate-300  flex justify-between items-center md:px-8 sm:px-4  px-2 border-b-[2px] border-slate-200">
