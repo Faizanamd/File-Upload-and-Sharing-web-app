@@ -12,7 +12,7 @@ export default function Files() {
   
     const fetchFiles = async () => {
         try {
-            const response = await axios.get('/api/users/files');
+            const response = await axios.get('https://file-upload-and-sharing-web-app.vercel.app/api/users/files');
             setFiles(response.data.files);
             setFiles(response.data.files.filter((file: any) => !file.trash));
         } catch (error: any) {
