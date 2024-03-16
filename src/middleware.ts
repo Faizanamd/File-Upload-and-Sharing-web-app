@@ -9,6 +9,7 @@ export function middleware(request: NextRequest) {
     if(token && publicPath){
         return NextResponse.redirect( new URL('/dashboard/files', request.url));
     } 
+
 }
 
 // See "Matching Paths" below to learn more

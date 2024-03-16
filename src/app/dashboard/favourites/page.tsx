@@ -1,7 +1,20 @@
+"use client";
 import Image from 'next/image'
 import ramdan from '../../../../public/ramadan.jpeg'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Favourites() {
+    const [userId, setUserId] = useState("");
+
+    const fetchData = async() =>{
+        const response = await axios.get('/api/users/getid');
+        console.log(response);
+        setUserId(response.data.id);
+    }
+    useEffect(() =>{
+            fetchData();
+    }, [])
     return (
         <div className="grid  grid-cols-4 gap-2  pt-4">
             <div className="w-[300px] bg-white px-2 py-2 rounded-md">

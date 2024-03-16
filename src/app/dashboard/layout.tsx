@@ -1,17 +1,22 @@
 "use client"
 
 import Navbar from "@/Components/Navbar"
+import axios from "axios";
 import Link from "next/link"
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function DashboardLayout({
-    children, 
+    children,
 }: {
     children: React.ReactNode
 }) {
 
+    const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    const [picture, setPicture] = useState("");
+    const [title, setTitle] = useState("");
     const openModal = () => {
         setIsModalOpen(true);
     };
@@ -19,6 +24,34 @@ export default function DashboardLayout({
     const closeModal = () => {
         setIsModalOpen(false);
     };
+    const hanldeImageChange = (e: any) => {
+        setPicture(e.target.files?.[0])
+    }
+    const handlefileupload = async() => {
+        try {
+            
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('image', picture);
+            console.log(picture);
+            console.log(formData);
+            const response = await axios.post('/api/users/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log('Upload successful:', response.data);
+            if(response.data.status){
+                toast.success(response.data.message);
+                closeModal();
+                setTitle("");
+            }else{
+                return toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.error('Upload failed:', error);
+        }
+    }
 
 
     return (
@@ -48,9 +81,9 @@ export default function DashboardLayout({
                     <div className="bg-slate-300 p-6 rounded-lg ">
                         <div className="flex flex-col space-y-3 relative">
                             <h2 className="text-xl text-center font-semibold mb-4">Upload File</h2>
-                            <input className="w-full outline-none px-4 py-2 rounded-lg border-[1px] border-black bg-slate-300" type="text" placeholder="Enter File title here" />
-                            <input className="w-full outline-none px-4 py-2 rounded-lg border-[1px] border-black" type="file" />
-                            <button className="w-full bg-white py-2 rounded-md uppercase font-semibold hover:bg-black hover:text-white transition duration-500 ease-in">UPLoad</button>
+                            <input value={title} onChange={(e) => setTitle(e.target.value)} className="w-full outline-none px-4 py-2 rounded-lg border-[1px] border-black bg-slate-300" type="text" placeholder="Enter File title here" />
+                            <input onChange={(e) => hanldeImageChange(e)} className="w-full outline-none px-4 py-2 rounded-lg border-[1px] border-black" type="file" />
+                            <button onClick={handlefileupload} className="w-full bg-white py-2 rounded-md uppercase font-semibold hover:bg-black hover:text-white transition duration-500 ease-in">UPLoad</button>
                         </div>
                         <button className="fixed top-20 right-20  rounded-full px-4 py-2 text-2xl mx-auto bg-white  text-black " onClick={closeModal}>
                             X
