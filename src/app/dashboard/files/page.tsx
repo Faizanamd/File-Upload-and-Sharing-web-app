@@ -50,7 +50,7 @@ export default function Files() {
         <div className="flex flex-wrap space-x-3 space-y-3  items-baseline justify-center">
             {files && files.map((file: any) => {
                 return (
-                    <div className=" relative w-[280px] bg-white px-2 py-2 rounded-md" >
+                    <div className=" relative w-[280px] bg-white px-2 py-2 rounded-md" key={file._id}>
                         <div className="w-full flex items-center justify-between">
                             <h1>{file.title}</h1>
                         </div>
