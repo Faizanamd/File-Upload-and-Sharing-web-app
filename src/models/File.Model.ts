@@ -6,8 +6,12 @@ const fileSchema = new mongoose.Schema({
     title:String,
     fav: {
         type: Boolean,
-        default: false
-    }
+        default: false,
+    },
+    trash:{
+        type:Boolean,
+        default:false,
+    },
 })
 
 const FileModel = mongoose.models.files || mongoose.model("files", fileSchema);

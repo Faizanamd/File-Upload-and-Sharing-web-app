@@ -3,7 +3,7 @@
 import Navbar from "@/Components/Navbar"
 import axios from "axios";
 import Link from "next/link"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -27,6 +27,9 @@ export default function DashboardLayout({
     const hanldeImageChange = (e: any) => {
         setPicture(e.target.files?.[0])
     }
+    useEffect(() =>{
+
+    }, [])
     const handlefileupload = async () => {
         try {
 

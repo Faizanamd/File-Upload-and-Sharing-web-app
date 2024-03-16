@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['localhost'], // Add 'localhost' to the list of allowed domains
-      },
+  images: {
+    domains: ['file-upload-and-sharing-web-app.vercel.app'],
+  },
+
 };
 
 export default nextConfig;
