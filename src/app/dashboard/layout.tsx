@@ -12,7 +12,7 @@ export default function DashboardLayout({
 }: {
     children: React.ReactNode
 }) {
-
+   
     const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [picture, setPicture] = useState("");
@@ -27,9 +27,9 @@ export default function DashboardLayout({
     const hanldeImageChange = (e: any) => {
         setPicture(e.target.files?.[0])
     }
-    const handlefileupload = async() => {
+    const handlefileupload = async () => {
         try {
-            
+
             const formData = new FormData();
             formData.append('title', title);
             formData.append('image', picture);
@@ -41,11 +41,11 @@ export default function DashboardLayout({
                 }
             });
             console.log('Upload successful:', response.data);
-            if(response.data.status){
+            if (response.data.status) {
                 toast.success(response.data.message);
                 closeModal();
                 setTitle("");
-            }else{
+            } else {
                 return toast.error(response.data.message);
             }
         } catch (error) {
@@ -73,7 +73,7 @@ export default function DashboardLayout({
                         </div>
                         <button className="px-[10px] py-[10px] rounded-md bg-black text-white" onClick={openModal}>Upload File</button>
                     </div>
-                    {children}
+                        {children}
                 </div>
             </div>
             {isModalOpen && (

@@ -9,7 +9,10 @@ export async function GET(request:NextRequest) {
        const userId = await getUserId(request);
        const files = await FileModel.find({userId:userId});
        console.log("files",files);
-       return NextResponse.json({status:false, message:"Your files", files:files}); 
+       if(!files){
+        return NextResponse.json({status:false, message:"Not founds"});
+       }
+       return NextResponse.json({status:true, message:"Your files", files:files}); 
     } catch (error:any) {
         return NextResponse.json({status:false, message:error.message})
     }
