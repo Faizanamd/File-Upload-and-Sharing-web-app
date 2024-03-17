@@ -7,7 +7,7 @@ export async function getUserId(request:NextRequest){
         console.log(";adf",descoredToken)
         // return  NextResponse.json({id:descoredToken.userId});
         
-        return descoredToken.userId;
+        return descoredToken.userId.toString();
     } catch (error:any) {
         return NextResponse.json({status:false, message:"Something went wrong"});
     }

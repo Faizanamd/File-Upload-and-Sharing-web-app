@@ -8,6 +8,7 @@ connectToMongoose();
 export async function GET(request: NextRequest) {
     try {
         const userId = await getUserId(request);
+        console.log("userId:", userId);
         const files = await FileModel.find({ userId: userId });
 
         if (!files || files.length === 0) {
