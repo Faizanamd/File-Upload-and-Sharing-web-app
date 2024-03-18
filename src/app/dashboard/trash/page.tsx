@@ -58,7 +58,7 @@ export default function Trash() {
                         <div className="w-full flex items-center justify-between">
                             <h1>{file.title}</h1>
                         </div>
-                        <Image width={280} height={280} className='px-4  h-40 my-4' src={`http://localhost:3000/${file.image}`} alt="" />
+                        <Image width={280} height={280} className='px-4  h-40 my-4' src={`https://file-upload-and-sharing-web-app.vercel.app/${file.image}`} alt="" />
                         <div className='flex items-center justify-between my-2 text-[12px] '>
                             <button onClick={() => handleTrash(file._id)} className="bg-black px-2 py-2 rounded-md text-white hover:cursor-pointer">Restore</button>
                             <button className="bg-black px-2 py-2 rounded-md text-white hover:cursor-pointer" onClick={() => handleDelete(file._id)}>Permanent Delete</button>

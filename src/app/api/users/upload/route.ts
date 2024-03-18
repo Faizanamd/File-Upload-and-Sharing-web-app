@@ -20,8 +20,8 @@ export async function POST(request: NextRequest) {
     }
     const byteData = await file.arrayBuffer();
     const buffer = Buffer.from(byteData);
-    const path = `./public/${file.name}`;
-    // const path = `https://file-upload-and-sharing-web-app.vercel.app/${file.name}`;
+    // const path = `./public/${file.name}`;
+    const path = `https://file-upload-and-sharing-web-app.vercel.app/${file.name}`;
     await writeFile(path, buffer);
 
     // Save file information to MongoDB
