@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
         const userId = await getUserId(request);
         console.log("userId:", userId);
         const files = await FileModel.find({ userId: userId });
-
+        console.log(files);
         if (!files || files.length === 0) {
             return NextResponse.json({ status: false, message: "Files not found" });
         }
