@@ -7,6 +7,7 @@ export async function GET(request:NextRequest){
         console.log(descoredToken)
         return  NextResponse.json({id:descoredToken.userId});
     } catch (error:any) {
+        
         return NextResponse.json({status:false, message:"Something went wrong"});
     }
 }
