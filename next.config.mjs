@@ -3,10 +3,11 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: 'localhost',
+        protocol: 'https',
+        hostname: 'file-upload-and-sharing-web-app.vercel.app',
       },
     ],
-  }
+  },
 };
 
 export default nextConfig;
