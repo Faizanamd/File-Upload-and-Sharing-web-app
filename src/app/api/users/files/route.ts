@@ -6,11 +6,12 @@ import { NextRequest, NextResponse } from "next/server";
 connectToMongoose();
 
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
     try {
         // const userId = await axios.get('/api/users/getid');
-        const userId = await getUserId(request);
-        console.log("userId:", userId);
+        // const userId = await getUserId(request);
+        // console.log("userId:", userId);
+        const {userId}  = await request.json();
         const files = await FileModel.find({ userId: userId });
         console.log(files);
         if (!files || files.length === 0) {

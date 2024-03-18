@@ -11,10 +11,10 @@ export default function Files() {
 
     const fetchFiles = async () => {
         try {
-            // const userId = await axios.get("/api/users/getid");
+           const reponse = await axios.get("/api/users/getid");
 
             // console.log("user id", userId);
-            const response = await axios.get('/api/users/files');
+            const response = await axios.post('/api/users/files', { userId: reponse.data.id });
             console.log(response)
             if (response.data.status) {
                 setFiles(response.data.files);
