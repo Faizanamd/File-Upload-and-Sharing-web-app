@@ -21,6 +21,6 @@ export async function GET(request: NextRequest) {
     } catch (error: any) {
         console.error("Error fetching files:", error);
 
-        return NextResponse.json({ status: false, message:error.message });
+        return NextResponse.json({ status: false, message: error.message });
     }
 }
