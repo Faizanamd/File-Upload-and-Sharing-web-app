@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
         const files = await FileModel.find({ userId: userId });
         console.log(files);
         if (!files || files.length === 0) {
-            return NextResponse.json({ status: false, message: "Files not found" });
+            return NextResponse.json({ status: false, message: "Files not found", files:files });
         }
 
         return NextResponse.json({ status: true, message: "Your files", files: files });
