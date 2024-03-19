@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { getUserId } from "@/helpers/getuserid";
+import { request } from "https";
 
 export default function Files() {
     const [onclickFun, setOnclick] = useState("");
@@ -12,8 +14,9 @@ export default function Files() {
     const fetchFiles = async () => {
         try {
            const reponse = await axios.get("/api/users/getid");
-
+            // const reponse = await getUserId(request);
             console.log("user id", reponse.data.id);
+            console.log(reponse);
             const response = await axios.post('/api/users/files', { userId: reponse.data.id });
             console.log(response)
             if (response.data.status) {
