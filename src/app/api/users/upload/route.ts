@@ -11,7 +11,7 @@ connectToMongoose();
 export async function POST(request: NextRequest) {
   try {
     const userId = await getUserId(request);
-    console.log("id",userId);
+    console.log("id", userId);
     const data = await request.formData();
     console.log(data);
     const file: any = data.get("image");
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     const byteData = await file.arrayBuffer();
     const buffer = Buffer.from(byteData);
     // const path = `./public/${file.name}`;
-    const path = `https://file-upload-and-sharing-web-app.vercel.app/${file.name}`;
+    const path = `https://file-upload-and-sharing-web-app.vercel.app/public/${file.name}`;
     await writeFile(path, buffer);
 
     // Save file information to MongoDB

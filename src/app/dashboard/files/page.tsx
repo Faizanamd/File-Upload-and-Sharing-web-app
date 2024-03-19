@@ -13,7 +13,7 @@ export default function Files() {
         try {
            const reponse = await axios.get("/api/users/getid");
 
-            // console.log("user id", userId);
+            console.log("user id", reponse.data.id);
             const response = await axios.post('/api/users/files', { userId: reponse.data.id });
             console.log(response)
             if (response.data.status) {
